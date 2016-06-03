@@ -1,0 +1,17 @@
+{
+    "name": "ocrrect",
+    "version": "0.0.1",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "coffee test/test.coffee"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "tape": "^4.5.1"
+    },
+    "dependencies": {
+        "xregexp": "^3.1.1"
+    }
+}
