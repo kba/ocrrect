@@ -6,11 +6,19 @@ module.exports = class TextObject
 		@length = @text.length
 
 	clone: ->
-		console.log 'yay'
 		return new @constructor(@type, @index, @text)
 
-	match : (pat) ->
-		XRegExp.match @text, new XRegExp(pat, 'x')
+	match : (pat, flags) ->
+		flags or= 'x'
+		XRegExp.match @text, new XRegExp(pat, flags)
+
+	replaceAll : (pat, replacement) ->
+		@text = XRegExp.replace @text, new XRegExp(pat), replacement, 'all'
+		return @
+
+	replace : (pat, replacement) ->
+		@text = XRegExp.replace @text, new XRegExp(pat), replacement
+		return @
 
 	join : (other) ->
 		str = if typeof other is 'string' then other else other.text

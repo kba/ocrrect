@@ -1,8 +1,13 @@
-Test = require 'tape'
-Cursor     = require '../src/Cursor'
-
+Test    = require 'tape'
+Cursor  = require '../src/Cursor'
+XRegExp = require 'xregexp'
 
 text = 'one, two three\n4our'
+
+Test 'xregexp', (t) ->
+	re = new XRegExp("\\d", "g")
+	t.equals XRegExp.match("123l2", re).length, 4, 'four matches'
+	t.end()
 
 Test 'cursor basics', (t) ->
 	c = new Cursor(text)
@@ -46,7 +51,7 @@ Test 'cur / move / next / prev', (t) ->
 	t.equals c.cur('word').text, 'two', "+ 5 => cur('word') == 'two'"
 	t.end()
 
-Test 'rule match', (t) ->
+Test 'hyphenation rule', (t) ->
 	hypRule = new (require '../src/rules/hyphenation')
 	text = 'foo-\nbar'
 	c = new Cursor(text, 3)
@@ -55,4 +60,12 @@ Test 'rule match', (t) ->
 	t.equals c.text, 'foobar\n', 'hyphenation fix succeeded'
 	t.end()
 
+Test.only 'letter-in-number rule', (t) ->
+	rule = new (require '../src/rules/letter-in-number')
+	text = '1234l3'
+	c = new Cursor(text)
+	t.ok rule.match(c), 'rule matches'
+	rule.fix(c)
+	t.equals c.text, '123413', 'fix succeeded'
+	t.end()
 # testWordCursor()

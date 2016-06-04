@@ -3,8 +3,7 @@ module.exports = class HyphenationRule
 	match : (c) ->
 		c.cur('char').match("-|=") and
 		c.next('char').match("\\n") and
-		c.cur('bword')             and
-		c.cur('bword').length > 1
+		c.cur('bword') and c.cur('bword').length > 1
 
 	fix : (c) ->
 		# remember line/page separator
@@ -15,5 +14,5 @@ module.exports = class HyphenationRule
 				.join(c.next('bword')) # join the next word
 		)
 		# Delete the next word
-		c.del c.next('word')
+		c.del c.next('bword')
 
