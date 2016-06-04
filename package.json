@@ -1,17 +1,20 @@
 {
-    "name": "ocrrect",
-    "version": "0.0.1",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "test": "coffee test/test.coffee"
-    },
-    "author": "",
-    "license": "ISC",
-    "devDependencies": {
-        "tape": "^4.5.1"
-    },
-    "dependencies": {
-        "xregexp": "^3.1.1"
-    }
+  "name": "ocrrect",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "coffee test/test.coffee",
+    "docs-md": "docco -t node_modules/docco/resources/plain-markdown/docco.jst src/*.coffee",
+    "docs": "docco src/*.coffee"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "docco": "^0.7.0",
+    "tape": "^4.5.1"
+  },
+  "dependencies": {
+    "xregexp": "^3.1.1"
+  }
 }
