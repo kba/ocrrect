@@ -8,12 +8,36 @@
   },
   "author": "",
   "license": "ISC",
+  "coffeelintConfig": {
+    "max_line_length": {
+      "value": 120,
+      "level": "error",
+      "limitComments": true
+    },
+    "no_tabs": {
+      "level": "ignore"
+    },
+    "indentation": {
+      "value": 1,
+      "level": "error"
+    }
+  },
+  "crojsdoc": {
+    "theme": "kba",
+    "theme_opts": {
+      "bootswatch": "spacelab"
+    }
+  },
   "devDependencies": {
-    "crojsdoc": "^0.8.17",
+    "crojsdoc": "git+https://github.com/kba/crojsdoc.git",
     "tap-spec": "^4.1.1",
     "tape": "^4.5.1"
   },
   "dependencies": {
+    "async": "^1.5.2",
+    "csv-parse": "^1.1.1",
+    "mkdirp": "^0.5.1",
+    "superagent": "^2.0.0",
     "xregexp": "^3.1.1"
   }
 }

@@ -17,7 +17,7 @@ class Cursor
 	constructor: (@text, @pos) ->
 		@pos or= 0
 		@_calculate_positions()
-	
+
 	_calculate_offsets : ->
 		@offsets = {}
 		@offsets.char = @pos
@@ -84,10 +84,6 @@ class Cursor
 		tobjType or= 'char'
 		@positions[tobjType][@offsets[tobjType]] or null
 
-	##
-	# @return {Boolean} whether the cursor is at the end of the text.
-	eof : () -> return @pos == @text.length
-
 	_cur_plus_offset: (tobjType, offset) ->
 		# if not currently in a  e.g. word, number, sentence ...
 		curOffset = @offsets[tobjType]
@@ -107,3 +103,13 @@ class Cursor
 	# prev: (amount, tobjType) ->
 	#   if amount and amount of TextObjectTypes then [amount, tobjType] = [1, amount]
 	#   @_cur_plus_offset(tobjType, -1 * Math.abs amount)
+
+	##
+	# Whether the cursor is at the end of the text.
+	# @return {Boolean} whether the cursor is at the end of the text.
+	atEOF : () -> return @pos == @text.length
+
+	##
+	# whether the cursor is at the start of the text.
+	# @return {Boolean} whether the cursor is at the start of the text.
+	atSOF : () -> return @pos == 0
