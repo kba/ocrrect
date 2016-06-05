@@ -30,3 +30,24 @@ function updatePrivate() {
 }
 $options_private.on('click', updatePrivate);
 updatePrivate();
+
+function augmentLabels(labelToBootstrap) {
+    var labels = Object.keys(labelToBootstrap);
+    for (var idx in labels) {
+        var label = labels[idx];
+        console.log(label);
+        $(".label-" + label).addClass("label-" + labelToBootstrap[label]);
+    }
+}
+augmentLabels({
+    property:   'warning',
+    optional:   'info',
+    static:     'warning',
+    abstract:   'warning',
+    override:   'warning',
+    async:      'warning',
+    addable:    'warning',
+    excludable: 'warning',
+    private:    'warning',
+    chainable:  'warning',
+});

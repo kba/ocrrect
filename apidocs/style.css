@@ -7,8 +7,13 @@ body {
 	top: 50px;
 	left: 0;
 	bottom: 0;
-	background: white;
+	/* background: white; */
 	position: fixed;
+}
+
+h3.panel-title {
+  font-size: 24px;
+  font-family: monospace;
 }
 
 .cormo-sidenav {
@@ -41,49 +46,53 @@ body {
 	margin-left: 3px;
 }
 
-.label-optional {
-	background-color: #3a87ad;
-}
+/* .label-optional { */
+/*     background-color: #3a87ad; */
+/* } */
 
-.label-static {
-	background-color: #f89406;
-}
+/* .label-static { */
+/*     background-color: #f89406; */
+/* } */
 
-.label-abstract {
-	background-color: #389486;
-}
+/* .label-abstract { */
+/*     background-color: #389486; */
+/* } */
 
-.label-override {
-	background-color: #389486;
-}
+/* .label-override { */
+/*     background-color: #389486; */
+/* } */
 
-.label-async {
-	background-color: #8daf28;
-}
+/* .label-async { */
+/*     background-color: #8daf28; */
+/* } */
 
-.label-property {
-	background-color: #c09853;
-}
+/* [> .label-property { <] */
+/* [>     background-color: #c09853; <] */
+/* [> } <] */
 
-.label-addable {
-	background-color: #468847;
-}
+/* .label-addable { */
+/*     background-color: #468847; */
+/* } */
 
-.label-excludable {
-	background-color: #468847;
-}
+/* .label-excludable { */
+/*     background-color: #468847; */
+/* } */
 
-.label-private {
-	background-color: #333333;
-}
+/* .label-private { */
+/*     background-color: #333333; */
+/* } */
 
-.label-chainable {
-	background-color: #44cc3a;
-}
+/* .label-chainable { */
+/*     background-color: #44cc3a; */
+/* } */
 
 .missing-link {
 	color: red;
 	background-color: gray;
+}
+
+.lead {
+  margin-bottom: inherit;
 }
 
 section {
