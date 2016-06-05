@@ -4,14 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "coffee test/test.coffee",
-    "docs-md": "docco -t node_modules/docco/resources/plain-markdown/docco.jst src/*.coffee",
-    "docs": "docco src/*.coffee"
+    "test": "coffee test/test.coffee"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "docco": "^0.7.0",
+    "crojsdoc": "^0.8.17",
+    "tap-spec": "^4.1.1",
     "tape": "^4.5.1"
   },
   "dependencies": {

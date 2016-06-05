@@ -1,4 +1,10 @@
-module.exports = class LetterInNumberRule
+BaseRule = require './BaseRule'
+
+module.exports =\
+
+##
+# Rule for matching letters in sequences of numbers
+class LetterInNumberRule extends BaseRule
 
 	match : (c) ->
 		digits = c.cur('bword').match("\\d")

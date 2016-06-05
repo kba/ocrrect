@@ -51,17 +51,17 @@ Test 'cur / move / next / prev', (t) ->
 	t.equals c.cur('word').text, 'two', "+ 5 => cur('word') == 'two'"
 	t.end()
 
-Test 'hyphenation rule', (t) ->
-	hypRule = new (require '../src/rules/hyphenation')
+Test 'HyphenationRule', (t) ->
+	hypRule = new (require '../src/rules/HyphenationRule')
 	text = 'foo-\nbar'
 	c = new Cursor(text, 3)
-	t.ok hypRule.match(c), 'hyphenation rule matches'
+	t.ok hypRule.match(c), 'HyphenationRule matches'
 	hypRule.fix(c)
-	t.equals c.text, 'foobar\n', 'hyphenation fix succeeded'
+	t.equals c.text, 'foobar\n', 'HyphenationRule fix succeeded'
 	t.end()
 
-Test.only 'letter-in-number rule', (t) ->
-	rule = new (require '../src/rules/letter-in-number')
+Test 'LetterInNumberRule', (t) ->
+	rule = new (require '../src/rules/LetterInNumberRule')
 	text = '1234l3'
 	c = new Cursor(text)
 	t.ok rule.match(c), 'rule matches'
