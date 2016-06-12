@@ -1,7 +1,7 @@
-TextObject      = require './TextObject'
-TextObjectTypes = require './TextObjectTypes'
+Token      = require './Token'
+TokenTypes = require './TokenTypes'
 
-NON_TEXT_OBJECT = new TextObject('none', -1, '')
+NON_TEXT_OBJECT = new Token('none', -1, '')
 
 module.exports = \
 
@@ -21,7 +21,7 @@ class Cursor
 	_calculate_offsets : ->
 		@offsets = {}
 		@offsets.char = @pos
-		for tobjType of TextObjectTypes
+		for tobjType of TokenTypes
 			continue if tobjType is 'char'
 			for idx, candidate of @positions[tobjType]
 				if @pos >= candidate.index and @pos < candidate.index + candidate.length
@@ -29,10 +29,10 @@ class Cursor
 
 	_calculate_positions : ->
 		@positions = {}
-		for tobjType, re of TextObjectTypes
+		for tobjType, re of TokenTypes
 			@positions[tobjType] = []
 			while (group = re.exec(@text)) != null
-				@positions[tobjType].push new TextObject(tobjType, group.index, group[0])
+				@positions[tobjType].push new Token(tobjType, group.index, group[0])
 		@_calculate_offsets()
 		return @
 
@@ -62,7 +62,7 @@ class Cursor
 	# Move the current position relative to the current position.
 	# @param {Number} amount Number of units to move (can be negative)
 	# @param {String} [tobjType='char'] Text object type
-	# @see TextObjectTypes
+	# @see TokenTypes
 	move : (amount, tobjType) ->
 		@moveTo(@pos + amount, tobjType)
 
@@ -97,11 +97,11 @@ class Cursor
 		@positions[tobjType][curOffset]
 
 	next: (amount, tobjType) ->
-		if amount and amount of TextObjectTypes then [amount, tobjType] = [1, amount]
+		if amount and amount of TokenTypes then [amount, tobjType] = [1, amount]
 		@_cur_plus_offset(tobjType, Math.abs amount)
 
 	# prev: (amount, tobjType) ->
-	#   if amount and amount of TextObjectTypes then [amount, tobjType] = [1, amount]
+	#   if amount and amount of TokenTypes then [amount, tobjType] = [1, amount]
 	#   @_cur_plus_offset(tobjType, -1 * Math.abs amount)
 
 	##

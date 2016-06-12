@@ -1,11 +1,11 @@
 ##
-# Basic units of text that are implemented by a TextObject and can be be used
+# Basic units of text that are implemented by a Token and can be be used
 # by a Cursor.
 #
 # @see Cursor
-# @see TextObject
+# @see Token
 #
-# @module TextObjectTypes
+# @module TokenTypes
 module.exports =
 
 	##

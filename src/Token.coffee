@@ -4,7 +4,7 @@ module.exports = \
 
 ##
 # A bounded part of a text
-class TextObject
+class Token
 
 	##
 	# Create a new text object
@@ -14,7 +14,7 @@ class TextObject
 	# @param {String} type type of text object
 	# @param {String} index index of text object within containing text
 	# @param {String} text string of this text
-	# @see TextObjectTypes
+	# @see TokenTypes
 	constructor: (@type, @index, @text) ->
 		# Store the text length as the length property of the text object
 		@length = @text.length
@@ -48,12 +48,12 @@ class TextObject
 		return @
 
 	##
-	# Create a new TextObject that joins this and another TextObject
+	# Create a new Token that joins this and another Token
 	#
-	# * `other` (String|TextObject): Other text object or string
+	# * `other` (String|Token): Other text object or string
 	join : (other) ->
 		str = if typeof other is 'string' then other else other.text
-		return new TextObject(@type, @index, @text + str)
+		return new Token(@type, @index, @text + str)
 
 	##
 	# String.substr-like substring allowing negative indexes
@@ -69,7 +69,7 @@ class TextObject
 	# @param {Number} [n=1] Number of characters to remove
 	removeLeft : (n) ->
 		n or= 1
-		return new TextObject(@type, @index, @text.substr(n))
+		return new Token(@type, @index, @text.substr(n))
 
 	##
 	# Remove `n` characters from the right end (=end) of the text
@@ -78,4 +78,4 @@ class TextObject
 	removeRight : (n) ->
 		n or= 1
 		max = if n < @text.length then @text.length - n else @text.length
-		return new TextObject(@type, @index, @text.substr(0,max))
+		return new Token(@type, @index, @text.substr(0,max))

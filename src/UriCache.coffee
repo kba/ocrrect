@@ -1,8 +1,9 @@
-MkdirP  = require 'mkdirp'
-Fs      = require 'fs'
-Path    = require 'path'
-Utils = require './Utils'
-Async = require 'async'
+MkdirP = require 'mkdirp'
+Fs     = require 'fs'
+Path   = require 'path'
+Async  = require 'async'
+
+Utils  = require './Utils'
 
 module.exports =\
 
