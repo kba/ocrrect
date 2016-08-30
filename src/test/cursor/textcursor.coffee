@@ -1,16 +1,11 @@
 Test    = require 'tape'
-Cursor  = require '../src/Cursor'
-XRegExp = require 'xregexp'
+
+TextCursor  = require '../../lib/cursor/TextCursor'
 
 text = 'one, two three\n4our'
 
-Test 'xregexp', (t) ->
-	re = new XRegExp("\\d", "g")
-	t.equals XRegExp.match("123l2", re).length, 4, 'four matches'
-	t.end()
-
 Test 'cursor basics', (t) ->
-	c = new Cursor(text)
+	c = new TextCursor({text: text})
 	t.equals c.positions.char.length, text.length, 'char length'
 	t.equals c.positions.word.length, 4, 'word length'
 	t.equals c.positions.bword.length, 4, 'bword length'
@@ -40,7 +35,7 @@ Test 'cursor basics', (t) ->
 
 
 Test 'cur / move / next / prev', (t) ->
-	c = new Cursor(text)
+	c = new TextCursor({text})
 	t.equals c.cur('char').text, text.substr(0,1), "cur('char') == 'o'"
 	t.equals c.cur('word').text, 'one', "cur('word') == 'one'"
 	c.move(4)
@@ -52,20 +47,20 @@ Test 'cur / move / next / prev', (t) ->
 	t.end()
 
 Test 'HyphenationRule', (t) ->
-	hypRule = new (require '../src/rules/HyphenationRule')
+	hypRule = new (require '../../lib/rules/HyphenationRule')
 	text = 'foo-\nbar'
-	c = new Cursor(text, 3)
+	c = new TextCursor({text, pos:3})
 	t.ok hypRule.match(c), 'HyphenationRule matches'
 	hypRule.fix(c)
 	t.equals c.text, 'foobar\n', 'HyphenationRule fix succeeded'
 	t.end()
 
 Test 'LetterInNumberRule', (t) ->
-	rule = new (require '../src/rules/LetterInNumberRule')
+	rule = new (require '../../lib/rules/LetterInNumberRule')
 	text = '1234l3'
-	c = new Cursor(text)
+	c = new TextCursor({text})
 	t.ok rule.match(c), 'rule matches'
 	rule.fix(c)
 	t.equals c.text, '123413', 'fix succeeded'
 	t.end()
-# testWordCursor()
+# testWordTextCursor()

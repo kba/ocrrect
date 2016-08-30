@@ -4,7 +4,7 @@ APIDOCDIR = apidocs
 .PHONY: apidocs apidocs-push test
 
 test:
-	coffee $$(find test -name '*.coffee') | tap-spec
+	coffee $$(find src/test -name '*.coffee') | tap-spec
 
 apidocs:
 	crojsdoc -o gh-pages/apidocs --theme kba -f src

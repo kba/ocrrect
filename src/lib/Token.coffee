@@ -6,6 +6,9 @@ module.exports = \
 # A bounded part of a text
 class Token
 
+
+	@NON_TEXT_OBJECT: new Token('none', -1, '')
+
 	##
 	# Create a new text object
 	#

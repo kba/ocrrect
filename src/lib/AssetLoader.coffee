@@ -1,6 +1,7 @@
 Request = require 'superagent'
 CsvParse = require 'csv-parse'
 UriCache = require './UriCache'
+{TRAF} = require 'traf'
 
 module.exports =\
 
@@ -38,9 +39,10 @@ class AssetLoader
 	load : (uri, opts, cb) ->
 		return cb new Error("Must specify dataType") if not opts.dataType
 		@cache.get uri, (err, data) =>
-			return @_parseData data, dataType, cb unless err
+			return @_parseData data, opts.dataType, cb unless err
 			Request.get(uri).end (err, res) =>
+				return cb err if err
 				@cache.put uri, res.text, (err) =>
-					return @_parseData res.text, dataType, cb unless err
+					return @_parseData res.text, opts.dataType, cb unless err
 					cb err
 
