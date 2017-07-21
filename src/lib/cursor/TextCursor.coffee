@@ -8,7 +8,7 @@ module.exports = \
 # Cursor for navigating and manipulating plain text
 class TextCursor extends Cursor
 
-	@supportedTokens: [
+	supportedTokens: [
 		'char'
 		'bword'
 		'word'
